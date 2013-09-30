@@ -49,8 +49,8 @@ function timer(){
 		alert("Score: "+score);
 		clearInterval(interval);
 
-		ele_clown.css({"display":"none");
-		ele_pepito.css({"display":"none");
+		ele_clown.css({"display":"none"});
+		ele_pepito.css({"display":"none"});
 		
 		ele_time.html("<p onClick='reset();' action='reset();'>Try Again</p>");
 		ele_time.css({"font-size":"12px"});
