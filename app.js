@@ -1,6 +1,7 @@
 var ele_wrap = $("#wrapper");
 var ele_clown = $("#clown");
 var ele_pepito = $("#pepito");
+
 var score = 0;
 var init_time = 60;
 var time = 60;
