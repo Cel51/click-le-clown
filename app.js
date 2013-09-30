@@ -36,7 +36,7 @@ $(document).ready(function()
 
 				$("#clown").off();
 				
-				$(".time").html("<a href='' onClick='reset()'>Try Again</a>");
+				$(".time").html("<p onClick='reset();'>Try Again</p>");
 				$(".time").css({"font-size":"12px"});
 			}
 		}
