@@ -7,14 +7,16 @@ var time = 60;
 var actif = 0;
 var bestScore = 0;
 var interval;
-var posX = (Math.random()*(x - ele_clown.height));
-var posY = (Math.random()*(y - ele_clown.width));
-var x = ele_wrap.height();
-var y = ele_wrap.width();
-var clownX = ele_clown.height();
-var clownY = ele_clown.width();
-var pepitoX = ele_pepito.height();
-var pepitoY = ele_pepito.width();
+
+var y = ele_wrap.height();
+var x = ele_wrap.width();
+var clownY = ele_clown.height();
+var clownX = ele_clown.width();
+var pepitoY = ele_pepito.height();
+var pepitoX = ele_pepito.width();
+
+var posY = (Math.random()*(y - ele_clown.height));
+var posX = (Math.random()*(x - ele_clown.width));
 
 function reset(){
 	time = init_time;
@@ -62,7 +64,7 @@ function move(object,factor,val){
 	posX = (Math.random()*factor);
 	posY = (Math.random()*factor);
 
-	object.animate({"top":posX,"left":posY},100);
+	object.animate({"top":posY,"left":posX},100);
 
 	score = score + val;
 	$(".score").html(score);
@@ -72,13 +74,13 @@ $(document).ready(function()
 {
 	$("#pepito").css({"display":"none"});
 	$(".score").html(score);
-	$("#clown").css({"top":posX,"left":posY});
+	$("#clown").css({"top":posY,"left":posX});
 
 	$("#clown").click(function(){
-		move($(this),y-clownY-clownY/2,1);
+		move($(this),x-clownX-clownX/2,1);
 	});
 	$("#pepito").click(function(){
-		move($(this),y-pepitoY-pepitoY/2,3);
+		move($(this),x-pepitoX-pepitoX/2,3);
 	});
 		
 	interval = setInterval(timer,1000);
