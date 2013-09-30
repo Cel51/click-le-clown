@@ -12,20 +12,17 @@ $(document).ready(function()
 
 		$("#clown").click(function()
 		{
-			posX = (Math.random()*650);
-			posY = (Math.random()*650);
-
-			console.log(posX + " " +posY);
-
-			$(this).animate({"top":posX,"left":posY},100);
-
-			score++;
-			$(".score").html(score);
+			position($(this));	
 		});
 		
-		var interval = setInterval(penis,1000);
+		$("#pepito").click(function()
+		{
+			position($(this));	
+		});
+		
+		var interval = setInterval(timer,1000);
 
-		function penis()
+		function timer()
 		{
 			time--;
 			$(".time").html(time);
@@ -37,7 +34,19 @@ $(document).ready(function()
 				$("#clown").off();
 			}
 		}
+		
+		function position(onch){
+			posX = (Math.random()*650);
+			posY = (Math.random()*650);
 
+			console.log(posX + " " +posY);
+
+			onch.animate({"top":posX,"left":posY},100);
+
+			score++;
+			$(".score").html(score);		
+		}
+		
 	
 
 });
