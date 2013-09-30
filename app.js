@@ -35,7 +35,7 @@ function timer(){
 	$(".time").html(time);
 	
 	var chapiteau = Math.floor((Math.random()*100)+1);
-	if(chapiteau < 31){
+	if(chapiteau < 11){
 		ele_pepito.css({"display":"inline"});
 	}else{
 		ele_pepito.css({"display":"none"});
