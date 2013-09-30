@@ -1,17 +1,23 @@
+var ele_wrap = $("#wrapper");
+var ele_clown = $("#clown");
+var ele_pepito = $("#pepito");
 var score = 0;
+var init_time = 60;
 var time = 60;
 var actif = 0;
 var bestScore = 0;
 var interval;
-var posX = (Math.random()*650);
-var	posY = (Math.random()*650);
+var posX = (Math.random()*(x - ele_clown.height));
+var posY = (Math.random()*(y - ele_clown.width));
+var x = ele_wrap.height();
+var y = ele_wrap.width();
 
 function reset(){
-	time = 60;
+	time = init_time;
 	score = 0;
 	
-	$("#clown").attr("disable",false);
-	$("#pepito").attr("disable",false);
+	ele_clown.attr("disable",false);
+	ele_pepito.attr("disable",false);
 
 	$(".score").html(score);
 	$(".time").html(time);
@@ -26,16 +32,16 @@ function timer(){
 	
 	var chapiteau = Math.floor((Math.random()*100)+1);
 	if(chapiteau < 31){
-		$("#pepito").css({"display":"inline"});
+		ele_pepito.css({"display":"inline"});
 	}else{
-		$("#pepito").css({"display":"none"});
+		ele_pepito.css({"display":"none"});
 	}
 	if (time==0) {
 		alert("Score: "+score);
 		clearInterval(interval);
 
-		$("#clown").attr("disable",true);
-		$("#pepito").attr("disable",true);
+		ele_clown.attr("disable",true);
+		ele_pepito.attr("disable",true);
 		
 		$(".time").html("<p onClick='reset();' action='reset();'>Try Again</p>");
 		$(".time").css({"font-size":"12px"});
@@ -44,6 +50,8 @@ function timer(){
 		}
 		$(".best").html(bestScore);
 		$(".best").css({"border-bottom":"2px solid #000","border-left":"2px solid #000"});
+		
+		//continuer attribution variable
 	}
 }
 function move(object,factor,val){
