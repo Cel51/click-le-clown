@@ -7,7 +7,7 @@ var posX = (Math.random()*650);
 var	posY = (Math.random()*650);
 
 function reset(){
-	time = 5;
+	time = 60;
 	score = 0;
 	
 	$("#clown").attr("disable",false);
@@ -24,8 +24,8 @@ function timer(){
 	time--;
 	$(".time").html(time);
 	
-	var chapiteau = Math.floor((Math.random()*10)+1);
-	if(chapiteau <= 3){
+	var chapiteau = Math.floor((Math.random()*100)+1);
+	if(chapiteau < 5){
 		$("#pepito").css({"display":"inline"});
 	}else{
 		$("#pepito").css({"display":"none"});
