@@ -1,14 +1,17 @@
 var score = 0;
-var time = 5;
+var time = 60;
 var actif = 0;
 var bestScore = 0;
 var interval;
-function reset()
-{
+var posX = (Math.random()*650);
+var	posY = (Math.random()*650);
+
+function reset(){
 	time = 5;
 	score = 0;
 	
 	$("#clown").attr("disable",false);
+	$("#pepito").attr("disable",false);
 
 	$(".score").html(score);
 	$(".time").html(time);
@@ -17,16 +20,22 @@ function reset()
 	interval = setInterval(timer, 1000);
 }
 		
-function timer()
-{
+function timer(){
 	time--;
 	$(".time").html(time);
-	if (time==0) 
-	{
+	
+	var chapiteau = Math.floor((Math.random()*10)+1);
+	if(chapiteau <= 3){
+		$("#pepito").css({"display":"inline"});
+	}else{
+		$("#pepito").css({"display":"none"});
+	}
+	if (time==0) {
 		alert("Score: "+score);
 		clearInterval(interval);
 
 		$("#clown").attr("disable",true);
+		$("#pepito").attr("disable",true);
 		
 		$(".time").html("<p onClick='reset();' action='reset();'>Try Again</p>");
 		$(".time").css({"font-size":"12px"});
@@ -37,24 +46,28 @@ function timer()
 		$(".best").css({"border-bottom":"2px solid #000","border-left":"2px solid #000"});
 	}
 }
+function move(object,factor,val){
+	posX = (Math.random()*factor);
+	posY = (Math.random()*factor);
+
+	object.animate({"top":posX,"left":posY},100);
+
+	score = score + val;
+	$(".score").html(score);
+}
+
 $(document).ready(function()
 {
-	var posX = (Math.random()*650);
-	var	posY = (Math.random()*650);
-	
-		$(".score").html(score);
-		$("#clown").css({"top":posX,"left":posY});
+	$("#pepito").css({"display":"none"});
+	$(".score").html(score);
+	$("#clown").css({"top":posX,"left":posY});
 
-		$("#clown").click(function()
-		{
-			posX = (Math.random()*650);
-			posY = (Math.random()*650);
-
-			$(this).animate({"top":posX,"left":posY},100);
-
-			score++;
-			$(".score").html(score);
-		});
+	$("#clown").click(function(){
+		move($(this),650,1);
+	});
+	$("#pepito").click(function(){
+		move($(this),450,3);
+	});
 		
 	interval = setInterval(timer,1000);
 });
