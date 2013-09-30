@@ -23,9 +23,9 @@ $(document).ready(function()
 			$(".score").html(score);
 		});
 		
-		var interval = setInterval(penis,1000);
+		var interval = setInterval(timer,1000);
 
-		function penis()
+		function timer()
 		{
 			time--;
 			$(".time").html(time);
@@ -35,10 +35,20 @@ $(document).ready(function()
 				clearInterval(interval);
 
 				$("#clown").off();
+				
+				$(".time").html("<a href='' onClick='reset()'>Try Again</a>");
+				$(".time").css({"font-size":"12px"});
 			}
 		}
 
-	
+		function reset(){
+			time = 60;
+			
+			$("clown").on();			
+			$(".time").html(time);
+			$(".time").css({"font-size":"30px"});
+			var interval = setInterval(timer, 1000);
+		}
 
 });
 
