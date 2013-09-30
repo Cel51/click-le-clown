@@ -23,8 +23,7 @@ function reset(){
 	time = init_time;
 	score = 0;
 	
-	ele_clown.attr("disable",false);
-	ele_pepito.attr("disable",false);
+	ele_clown.css({"display":"inline"});
 
 	$(".score").html(score);
 	$(".time").html(time);
@@ -47,8 +46,8 @@ function timer(){
 		alert("Score: "+score);
 		clearInterval(interval);
 
-		ele_clown.attr("disable",true);
-		ele_pepito.attr("disable",true);
+		ele_clown.css({"display":"none");
+		ele_pepito.css({"display":"none");
 		
 		$(".time").html("<p onClick='reset();' action='reset();'>Try Again</p>");
 		$(".time").css({"font-size":"12px"});
