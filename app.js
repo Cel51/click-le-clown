@@ -11,6 +11,10 @@ var posX = (Math.random()*(x - ele_clown.height));
 var posY = (Math.random()*(y - ele_clown.width));
 var x = ele_wrap.height();
 var y = ele_wrap.width();
+var clownX = ele_clown.height();
+var clownY = ele_clown.width();
+var pepitoX = ele_pepito.height();
+var pepitoY = ele_pepito.width();
 
 function reset(){
 	time = init_time;
@@ -71,10 +75,10 @@ $(document).ready(function()
 	$("#clown").css({"top":posX,"left":posY});
 
 	$("#clown").click(function(){
-		move($(this),650,1);
+		move($(this),y-clownY-clownY/2,1);
 	});
 	$("#pepito").click(function(){
-		move($(this),450,3);
+		move($(this),y-pepitoY-pepitoY/2,3);
 	});
 		
 	interval = setInterval(timer,1000);
