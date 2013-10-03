@@ -7,18 +7,16 @@ var ele_time = $(".time");
 var ele_score = $(".score");
 var ele_best = $(".best");
 
-var ele_bonus = $("#bonus");
-var ele_popcorn = $(".popcorn");
+var ele_bonus = $("#bonuses");
+var ele_pop = $(".popcorn");
 var ele_soda = $(".soda");
-var ele_icecream = $(".icecream");
+var ele_ice = $(".icecream");
 var ele_vip = $(".vip");
 
-var score = 0;
-var init_time = -1;
-var time = init_time;
-// var actif = 0;
-var bestScore = 0;
-var interval;
+var popcorn = new Bonus('.prixp',20);
+var soda = new Bonus('.prixs',35);
+var icecream = new Bonus('.prixi',50);
+var vip = new Bonus('.prixv',100);
 
 var y = ele_wrap.height();
 var x = ele_wrap.width();
@@ -29,6 +27,15 @@ var pepitoX = ele_pepito.width();
 
 var posY = (Math.random()*(y - ele_clown.height));
 var posX = (Math.random()*(x - ele_clown.width));
+
+var score = 0;
+var init_time = -1;
+var time = init_time;
+// var actif = 0;
+var bestScore = 0;
+var interval;
+
+
 
 function reset(){
 	time = init_time;
@@ -73,6 +80,7 @@ function timer(){
 		clearInterval(interval);
 	}
 }
+
 function move(object,factor,val){
 	posX = (Math.random()*factor);
 	posY = (Math.random()*factor);
@@ -82,19 +90,39 @@ function move(object,factor,val){
 	score = score + val;
 	ele_score.html(score);
 }
-
+function buy(object){
+	object.cost = object.getCost() * 2;
+	$(object.getName()).html(object.cost+' pts');
+}
 $(document).ready(function()
 {
+	
 	ele_pepito.css({"display":"none"});
 	ele_score.html(score);
 	ele_clown.css({"top":posY,"left":posX});
-
+	
+	$(popcorn.getName()).html(popcorn.getCost()+" pts");
+	$(soda.getName()).html(soda.getCost()+" pts");
+	$(icecream.getName()).html(icecream.getCost()+" pts");
+	$(vip.getName()).html(vip.getCost()+" pts");
+	
 	ele_clown.click(function(){
 		move($(this),x-clownX-clownX/2,1);
 	});
 	ele_pepito.click(function(){
 		move($(this),x-pepitoX-pepitoX/2,3);
 	});
-		
+	ele_pop.click(function(){
+		buy(popcorn);
+	});	
+	ele_soda.click(function(){
+		buy(soda);
+	});	
+	ele_ice.click(function(){
+		buy(icecream);
+	});	
+	ele_vip.click(function(){
+		buy(vip);
+	});	
 	interval = setInterval(timer,1000);
 });
