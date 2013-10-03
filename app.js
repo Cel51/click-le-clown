@@ -8,7 +8,7 @@ var ele_best = $(".best");
 
 
 var score = 0;
-var init_time = 5;
+var init_time = 60;
 var time = init_time;
 // var actif = 0;
 var bestScore = 0;
