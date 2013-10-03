@@ -3,6 +3,8 @@
 	padding: 0;
 	margin: 0;
 }
+body{
+}
 #wrapper
 {
 	position: absolute;
@@ -48,13 +50,26 @@
 	border-bottom: 2px solid #000;
 	border-right: 2px solid #000;
 }
+.best{
+	position: absolute;
+	width: 50px;
+	height: 25px;
+	
+	top: 0;
+	right: 0;
+	
+	font-size: 15px;
+	line-height: 25px;
+	
+	text-align: center;
+}
 .wrapper
 {
 	width: 800px;
 	height: 748px;
 	position: relative;
 	top: 52px;
-	
+
 	background-color: #B97A57;
 }
 #clown
@@ -75,5 +90,14 @@
 	position: absolute;
 
 	background-image: url(pepito.png);
-	opacity: 0;
+}
+
+#tryagain{
+	height: 40px;
+	width: 150px;
+	
+	top: 360;
+	left: 325;
+	
+	position: absolute;
 }
