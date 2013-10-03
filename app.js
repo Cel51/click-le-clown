@@ -1,14 +1,16 @@
 var ele_wrap = $("#wrapper");
 var ele_clown = $("#clown");
 var ele_pepito = $("#pepito");
+var ele_again = $("#tryagain");
 var ele_time = $(".time");
 var ele_score = $(".score");
 var ele_best = $(".best");
 
+
 var score = 0;
-var init_time = 60;
-var time = 60;
-var actif = 0;
+var init_time = 5;
+var time = init_time;
+// var actif = 0;
 var bestScore = 0;
 var interval;
 
@@ -27,7 +29,10 @@ function reset(){
 	score = 0;
 	
 	ele_clown.css({"display":"inline"});
-
+	
+	ele_again.css({"border":""})
+	ele_again.html('');
+	
 	ele_score.html(score);
 	ele_time.html(time);
 	ele_time.css({"font-size":"30px"});
@@ -46,21 +51,20 @@ function timer(){
 		ele_pepito.css({"display":"none"});
 	}
 	if (time==0) {
-		alert("Score: "+score);
-		clearInterval(interval);
-
 		ele_clown.css({"display":"none"});
 		ele_pepito.css({"display":"none"});
 		
-		ele_time.html("<p onClick='reset();' action='reset();'>Try Again</p>");
-		ele_time.css({"font-size":"12px"});
+		ele_again.css({"font-size":"30px","border":"2px solid #000"})
+		ele_again.html("<p onClick='reset();' align='center' vAlign='top'>Try Again</p>");
+		
 		if(score > bestScore){
 			bestScore = score;
 		}
 		ele_best.html(bestScore);
 		ele_best.css({"border-bottom":"2px solid #000","border-left":"2px solid #000"});
 		
-		//continuer attribution variable
+		alert("Score: "+score);
+		clearInterval(interval);
 	}
 }
 function move(object,factor,val){
