@@ -16,6 +16,21 @@ body{
 
 	border: 2px solid #000;
 }
+
+#bonuses{
+	position: absolute;
+	
+	width: 150px;
+	height: 800px;
+	
+	top: 50%; margin-top: -400px;
+	left: 50%; margin-left: 405px;
+	
+	background-color: #ff0000;
+	
+	border: 2px solid #000;
+}
+
 .score
 {
 	position: absolute;
@@ -100,4 +115,14 @@ body{
 	left: 325;
 	
 	position: absolute;
+}
+
+.popcorn{
+	height: 200px;
+	width: 150px;
+	
+	top: 0;
+	left: 0;
+	
+	background-image: url('popcorn.png');
 }
