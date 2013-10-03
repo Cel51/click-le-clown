@@ -1,11 +1,17 @@
 var ele_wrap = $("#wrapper");
 var ele_clown = $("#clown");
 var ele_pepito = $("#pepito");
+
 var ele_again = $("#tryagain");
 var ele_time = $(".time");
 var ele_score = $(".score");
 var ele_best = $(".best");
 
+var ele_bonus = $("#bonus");
+var ele_popcorn = $(".popcorn");
+var ele_soda = $(".soda");
+var ele_icecream = $(".icecream");
+var ele_vip = $(".vip");
 
 var score = 0;
 var init_time = -1;

@@ -124,5 +124,35 @@ body{
 	top: 0;
 	left: 0;
 	
-	background-image: url('popcorn.png');
+	background-image: url(popcorn.png);
+}
+
+.soda{
+	height: 200px;
+	width: 150px;
+	
+	top: 200px;
+	left: 0;
+	
+	background-image: url(soda.png);
+}
+
+.icecream{
+	height: 200px;
+	width: 150px;
+	
+	top: 400px;
+	left: 0;
+	
+	background-image: url(icecream.png);
+}
+
+.vip{
+	height: 200px;
+	width: 150px;
+	
+	top: 600px;
+	left: 0;
+	
+	background-image: url('vip.png');
 }
