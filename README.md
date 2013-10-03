@@ -1,4 +1,4 @@
-Click-le-clown
+Click le clown
 ==============
 
 Le jeu enfin disponible
