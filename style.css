@@ -118,6 +118,8 @@ body{
 }
 
 .popcorn{
+	position: absolute;
+	
 	height: 200px;
 	width: 150px;
 	
@@ -128,31 +130,85 @@ body{
 }
 
 .soda{
+	position: absolute;
+	
 	height: 200px;
 	width: 150px;
 	
-	top: 200px;
+	top: 202px;
 	left: 0;
 	
 	background-image: url(soda.png);
 }
 
 .icecream{
+	position: absolute;
+	
 	height: 200px;
 	width: 150px;
 	
-	top: 400px;
+	top: 404px;
 	left: 0;
 	
 	background-image: url(icecream.png);
 }
 
 .vip{
+	position: absolute;
+	
 	height: 200px;
 	width: 150px;
 	
-	top: 600px;
+	top: 606px;
 	left: 0;
 	
 	background-image: url('vip.png');
+}
+
+.prixp{
+	position: absolute;
+	
+	height : 30px;
+	width: 150px;
+	
+	top: 170px;
+	left: 0;
+	
+	border-bottom: 2px solid #000;
+}
+
+.prixs{
+	position: absolute;
+	
+	height : 30px;
+	width: 150px;
+	
+	top: 370px;
+	left: 0;
+
+	border-bottom: 2px solid #000;
+}
+
+.prixi{
+	position: absolute;
+	
+	height : 30px;
+	width: 150px;
+	
+	top: 570px;
+	left: 0;
+	
+	border-bottom: 2px solid #000;
+}
+
+.prixv{
+	position: absolute;
+	
+	height : 30px;
+	width: 150px;
+	
+	top: 770px;
+	left: 0;
+	
+	border-bottom: 2px solid #000;
 }
