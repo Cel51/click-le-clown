@@ -147,7 +147,7 @@ body{
 	height: 200px;
 	width: 150px;
 	
-	top: 404px;
+	top: 402px;
 	left: 0;
 	
 	background-image: url(icecream.png);
@@ -156,10 +156,10 @@ body{
 .vip{
 	position: absolute;
 	
-	height: 200px;
+	height: 198px;
 	width: 150px;
 	
-	top: 606px;
+	top: 604px;
 	left: 0;
 	
 	background-image: url('vip.png');
