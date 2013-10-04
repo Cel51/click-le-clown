@@ -128,11 +128,24 @@ function buy(object){
 			combo(object.getCost()/2);
 	}
 }
+
+//fonctionsBonus
 function byDefault(){
 	fact = 1;
 	$(popcorn.getName()).css({"display":"inline"});
 	ele_pop.css({"display":"inline"});
+	
+	$(soda.getName()).css({"display":"inline"});
+	ele_soda.css({"display":"inline"});
+	
+	$(icecream.getName()).css({"display":"inline"});
+	ele_ice.css({"display":"inline"});
+	
+	$(vip.getName()).css({"display":"inline"});
+	ele_vip.css({"display":"inline"});
 }
+
+
 function multiply(factor){
 	fact = 2;
 	$(popcorn.getName()).css({"display":"none"});
@@ -140,16 +153,19 @@ function multiply(factor){
 	setTimeout(byDefault,3000*factor);
 }
 
-function addTime(time){
-
+function addTime(){
+	time = time+10;
+	$(soda.getName()).css({"display":"none"});
+	ele_soda.css({"display":"none"});
+	setTimeout(byDefault,10000);
 }
 
 function freeze(duration){
-
+	//blocage du mouvement, ou réduction de la zone de déplacement
 }
 
 function combo(param){
-
+	//megaCheatComboOfAllTheAbove
 }
 
 
