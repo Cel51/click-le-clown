@@ -44,6 +44,7 @@ var pepitoVal = 3;
 function reset(){
 	time = init_time;
 	score = 0;
+	chances = 11;
 	
 	$("#clown").css({"display":"inline"});
 	
@@ -135,9 +136,6 @@ function buy(object){
 }
 
 //fonctionsBonus
-
-
-
 function byDefault(called){
 	
 	if(called == "pop"){
@@ -153,8 +151,10 @@ function byDefault(called){
 		
 	}
 	
-	$(vip.getName()).css({"display":"inline"});
-	ele_vip.css({"display":"inline"});
+	if(called == "vip"){
+		$(vip.getName()).css({"display":"inline"});
+		ele_vip.css({"display":"inline"});
+	}
 	
 	if(called == "ice"){
 		$(icecream.getName()).css({"display":"inline"});
@@ -188,6 +188,8 @@ function addTime(){
 
 function freeze(duration){
 	//blocage du mouvement, ou réduction de la zone de déplacement
+	$(icecream.getName()).css({"display":"none"});
+	
 	ele_clown.off('click');
 	ele_clown.click(function(){
 		scoring(clownVal*fact);
@@ -196,12 +198,13 @@ function freeze(duration){
 		byDefault("ice");
 	},duration*1000/3);
 }
-function combo(param){
-	//megaCheatComboOfAllTheAbove
+function spawn(param){
+	$(vip.getName()).css({"display":"none"});
+	
+	chances = chances + 10;setTimeout(function(){
+		byDefault("vip");
+	},10000);
 }
-
-
-
 //---------------------------------------------------------------------------
 
 function Bonus(name, cost){
