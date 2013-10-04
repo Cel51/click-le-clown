@@ -1,102 +1,5 @@
-var ele_wrap = $("#wrapper");
-var ele_clown = $("#clown");
-var ele_pepito = $("#pepito");
-
-var ele_again = $("#tryagain");
-var ele_time = $(".time");
-var ele_score = $(".score");
-var ele_best = $(".best");
-
-var ele_bonus = $("#bonuses");
-var ele_pop = $(".popcorn");
-var ele_soda = $(".soda");
-var ele_ice = $(".icecream");
-var ele_vip = $(".vip");
-
-var popcorn = new Bonus('.prixp',20);
-var soda = new Bonus('.prixs',35);
-var icecream = new Bonus('.prixi',50);
-var vip = new Bonus('.prixv',100);
-
-var y = ele_wrap.height();
-var x = ele_wrap.width();
-var clownY = ele_clown.height();
-var clownX = ele_clown.width();
-var pepitoY = ele_pepito.height();
-var pepitoX = ele_pepito.width();
-
-var posY = (Math.random()*(y - ele_clown.height));
-var posX = (Math.random()*(x - ele_clown.width));
-
-var score = 0;
-var init_time = -1;
-var time = init_time;
-// var actif = 0;
-var bestScore = 0;
-var interval;
-
-
-
-function reset(){
-	time = init_time;
-	score = 0;
-	
-	ele_clown.css({"display":"inline"});
-	
-	ele_again.css({"border":""})
-	ele_again.html('');
-	
-	ele_score.html(score);
-	ele_time.html(time);
-	ele_time.css({"font-size":"30px"});
-	
-	interval = setInterval(timer, 1000);
-}
-		
-function timer(){
-	time--;
-	ele_time.html(time);
-	
-	var chapiteau = Math.floor((Math.random()*100)+1);
-	if(chapiteau < 11){
-		ele_pepito.css({"display":"inline"});
-	}else{
-		ele_pepito.css({"display":"none"});
-	}
-	if (time==0) {
-		ele_clown.css({"display":"none"});
-		ele_pepito.css({"display":"none"});
-		
-		ele_again.css({"font-size":"30px","border":"2px solid #000"})
-		ele_again.html("<p onClick='reset();' align='center' vAlign='top'>Try Again</p>");
-		
-		if(score > bestScore){
-			bestScore = score;
-		}
-		ele_best.html(bestScore);
-		ele_best.css({"border-bottom":"2px solid #000","border-left":"2px solid #000"});
-		
-		alert("Score: "+score);
-		clearInterval(interval);
-	}
-}
-
-function move(object,factor,val){
-	posX = (Math.random()*factor);
-	posY = (Math.random()*factor);
-
-	object.animate({"top":posY,"left":posX},100);
-
-	score = score + val;
-	ele_score.html(score);
-}
-function buy(object){
-	object.cost = object.getCost() * 2;
-	$(object.getName()).html(object.cost+' pts');
-}
 $(document).ready(function()
 {
-	
 	ele_pepito.css({"display":"none"});
 	ele_score.html(score);
 	ele_clown.css({"top":posY,"left":posX});
@@ -107,10 +10,10 @@ $(document).ready(function()
 	$(vip.getName()).html(vip.getCost()+" pts");
 	
 	ele_clown.click(function(){
-		move($(this),x-clownX-clownX/2,1);
+		move($(this),x-clownX-clownX/2);
 	});
 	ele_pepito.click(function(){
-		move($(this),x-pepitoX-pepitoX/2,3);
+		move($(this),x-pepitoX-pepitoX/2);
 	});
 	ele_pop.click(function(){
 		buy(popcorn);
@@ -124,5 +27,6 @@ $(document).ready(function()
 	ele_vip.click(function(){
 		buy(vip);
 	});	
+	
 	interval = setInterval(timer,1000);
 });
