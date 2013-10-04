@@ -130,13 +130,13 @@ function buy(object){
 				multiply(object.getCost()/2);
 				break;
 			case ".prixs":
-				addTime(object.getCost()/2);
+				addTime();
 				break;
 			case ".prixi":
 				freeze(object.getCost()/2);
 				break;
 			case ".prixv":
-				combo(object.getCost()/2);
+				spawn(object.getCost()/2);
 		}
 	}
 }
