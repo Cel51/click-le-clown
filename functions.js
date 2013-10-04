@@ -46,6 +46,12 @@ function reset(){
 	score = 0;
 	chances = 11;
 	
+	// ele_clown.off('click');
+		
+	// ele_clown.click(function(){
+		// move($(this),x-clownX-clownX/2);
+	// });
+	byDefault("all");
 	$("#clown").css({"display":"inline"});
 	
 	ele_again.css({"border":""})
@@ -166,6 +172,12 @@ function byDefault(called){
 			move($(this),x-clownX-clownX/2);
 		});
 	}
+	if(called == "all"){
+		byDefault("pop");
+		byDefault("soda");
+		byDefault("vip");
+		byDefault("ice");
+	}
 }
 
 function multiply(factor){
@@ -189,6 +201,7 @@ function addTime(){
 function freeze(duration){
 	//blocage du mouvement, ou réduction de la zone de déplacement
 	$(icecream.getName()).css({"display":"none"});
+	ele_ice.css({"display":"none"});
 	
 	ele_clown.off('click');
 	ele_clown.click(function(){
@@ -200,6 +213,7 @@ function freeze(duration){
 }
 function spawn(param){
 	$(vip.getName()).css({"display":"none"});
+	ele_vip.css({"display":"none"});
 	
 	chances = chances + 10;setTimeout(function(){
 		byDefault("vip");
