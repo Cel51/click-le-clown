@@ -33,11 +33,13 @@ var init_time = 60;
 var time = init_time;
 var actif = 0;
 var bestScore = 0;
-var clownVal = 1;
-var pepitoVal = 3;
+
 var interval;
 var chances = 11;
 var fact = 1;
+var clownVal = 1;
+var pepitoVal = 3;
+
 
 function reset(){
 	time = init_time;
@@ -91,18 +93,20 @@ function timer(){
 		clearInterval(interval);
 	}
 }
-
+function scoring(up){
+	score = score + up;
+	ele_score.html(score);
+}
 function move(object,factor){
 	posX = (Math.random()*factor);
 	posY = (Math.random()*factor);
 
 	object.animate({"top":posY,"left":posX},100);
 	if(factor == x-clownX-clownX/2){
-		score = score + clownVal*fact;
+		scoring(clownVal*fact);
 	}else{
-		score = score + pepitoVal*fact;
+		scoring(pepitoVal*fact);
 	}
-	ele_score.html(score);
 }
 
 function buy(object){
@@ -113,60 +117,89 @@ function buy(object){
 		object.cost = object.getCost() * 2;
 		$(object.getName()).html(object.cost+' pts');
 		ele_score.html(score);
-	}
-	switch(object.getName()){
-		case ".prixp":
-			multiply(object.getCost()/2);
-			break;
-		case ".prixs":
-			addTime(object.getCost()/2);
-			break;
-		case ".prixi":
-			freeze(object.getCost()/2);
-			break;
-		case ".prixv":
-			combo(object.getCost()/2);
+	
+		switch(object.getName()){
+			case ".prixp":
+				multiply(object.getCost()/2);
+				break;
+			case ".prixs":
+				addTime(object.getCost()/2);
+				break;
+			case ".prixi":
+				freeze(object.getCost()/2);
+				break;
+			case ".prixv":
+				combo(object.getCost()/2);
+		}
 	}
 }
 
 //fonctionsBonus
-function byDefault(){
-	fact = 1;
-	$(popcorn.getName()).css({"display":"inline"});
-	ele_pop.css({"display":"inline"});
+
+
+
+function byDefault(called){
 	
-	$(soda.getName()).css({"display":"inline"});
-	ele_soda.css({"display":"inline"});
+	if(called == "pop"){
+		fact = 1;
+
+		$(popcorn.getName()).css({"display":"inline"});
+		ele_pop.css({"display":"inline"});
+	}
 	
-	$(icecream.getName()).css({"display":"inline"});
-	ele_ice.css({"display":"inline"});
+	if(called == "soda"){
+		$(soda.getName()).css({"display":"inline"});
+		ele_soda.css({"display":"inline"});
+		
+	}
 	
 	$(vip.getName()).css({"display":"inline"});
 	ele_vip.css({"display":"inline"});
+	
+	if(called == "ice"){
+		$(icecream.getName()).css({"display":"inline"});
+		ele_ice.css({"display":"inline"});
+		
+		ele_clown.off('click');
+		
+		ele_clown.click(function(){
+			move($(this),x-clownX-clownX/2);
+		});
+	}
 }
-
 
 function multiply(factor){
 	fact = 2;
 	$(popcorn.getName()).css({"display":"none"});
 	ele_pop.css({"display":"none"});
-	setTimeout(byDefault,3000*factor);
+	setTimeout(function(){
+		byDefault("pop");
+	},3000*factor);
 }
 
 function addTime(){
 	time = time+10;
 	$(soda.getName()).css({"display":"none"});
 	ele_soda.css({"display":"none"});
-	setTimeout(byDefault,10000);
+	setTimeout(function(){
+		byDefault("soda");
+	},10000);
 }
 
 function freeze(duration){
 	//blocage du mouvement, ou réduction de la zone de déplacement
-}
-
+	ele_clown.off('click');
+	ele_clown.click(function(){
+		scoring(clownVal*fact);
+	});
+	setTimeout(function(){
+		byDefault("ice");
+	},duration*1000/3);
 function combo(param){
 	//megaCheatComboOfAllTheAbove
 }
+}
+
 
 
 //---------------------------------------------------------------------------
