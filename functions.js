@@ -195,9 +195,9 @@ function freeze(duration){
 	setTimeout(function(){
 		byDefault("ice");
 	},duration*1000/3);
+}
 function combo(param){
 	//megaCheatComboOfAllTheAbove
-}
 }
 
 
