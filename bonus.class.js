@@ -10,8 +10,3 @@ Bonus.prototype.getName = function(){
 Bonus.prototype.getCost = function(){
 							return this.cost;
 						};
-						
-Bonus.prototype.display = function(){
-	alert(this.name);
-	this.name.html(this.cost+' pts');
-}
