@@ -97,7 +97,7 @@ body{
 
 	position: absolute;
 
-	background-image: url(clown.gif);
+	background-image: url(./img/clown.gif);
 }
 
 #pepito
@@ -107,7 +107,7 @@ body{
 
 	position: absolute;
 
-	background-image: url(pepito.png);
+	background-image: url(./img/pepito.png);
 }
 
 #tryagain{
@@ -129,7 +129,7 @@ body{
 	top: 0;
 	left: 0;
 	
-	background-image: url(popcorn.png);
+	background-image: url(./img/popcorn.png);
 }
 
 .soda{
@@ -141,7 +141,7 @@ body{
 	top: 202px;
 	left: 0;
 	
-	background-image: url(soda.png);
+	background-image: url(./img/soda.png);
 }
 
 .icecream{
@@ -153,7 +153,7 @@ body{
 	top: 402px;
 	left: 0;
 	
-	background-image: url(icecream.png);
+	background-image: url(./img/icecream.png);
 }
 
 .vip{
@@ -165,7 +165,7 @@ body{
 	top: 604px;
 	left: 0;
 	
-	background-image: url('vip.png');
+	background-image: url(./img/vip.png);
 }
 
 .prixp{
