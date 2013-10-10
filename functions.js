@@ -46,11 +46,6 @@ function reset(){
 	score = 0;
 	chances = 11;
 	
-	// ele_clown.off('click');
-		
-	// ele_clown.click(function(){
-		// move($(this),x-clownX-clownX/2);
-	// });
 	byDefault("all");
 	$("#clown").css({"display":"inline"});
 	
@@ -87,6 +82,18 @@ function timer(){
 		$("#clown").css({"display":"none"});
 		ele_pepito.css({"display":"none"});
 		
+		
+		ele_bonus.css({"bgcolor":"#ED1C24"});
+		ele_pop.css({"display":"none"});
+		ele_soda.css({"display":"none"});
+		ele_ice.css({"display":"none"});
+		ele_vip.css({"display":"none"});
+	
+		$(popcorn.getName()).css({"display":"none"});
+		$(soda.getName()).css({"display":"none"});
+		$(icecream.getName()).css({"display":"none"});
+		$(vip.getName()).css({"display":"none"});
+	
 		ele_again.css({"font-size":"30px","border":"2px solid #000"})
 		ele_again.html("<p onClick='reset();' align='center' vAlign='top'>Try Again</p>");
 		
