@@ -5,8 +5,7 @@
 }
 body{
 }
-#wrapper
-{
+#wrapper{
 	position: absolute;
 	width: 800px;	
 	height: 800px;
@@ -16,7 +15,14 @@ body{
 
 	border: 2px solid #000;
 }
-
+.infoGame{
+	position:absolute;
+	
+	top:0px;
+	
+	height: 52px;
+	margin-left: 65px;
+}
 #bonuses{
 	position: absolute;
 	
@@ -32,9 +38,21 @@ body{
 	
 	text-align : center;
 }
-
-.score
-{
+#tutoBonus{
+	position: absolute;
+	width: 3000px;
+	height: 800px;
+	
+	top:50%;margin-top:-400px;
+	left:50%;margin-left: 560px;
+}
+#tutoPopcorn{
+	position: absolute;
+	
+	width: 200px;
+	height: 210px;
+}
+.score{
 	position: absolute;
 	width: 100px;
 	height: 52px;
@@ -49,8 +67,7 @@ body{
 
 	border-left: 2px solid #000;
 }
-.time
-{
+.time{
 	position: absolute;
 	width: 60px;
 	height: 52px;
@@ -78,8 +95,7 @@ body{
 	
 	text-align: center;
 }
-.wrapper
-{
+.wrapper{
 	width: 800px;
 	height: 748px;
 	position: relative;
@@ -90,8 +106,7 @@ body{
 	border: 2px solid #000;
 	border-left: 0;
 }
-#clown
-{
+#clown{
 	height: 100px;
 	width: 100px;
 
@@ -99,9 +114,15 @@ body{
 
 	background-image: url(./img/clown.gif);
 }
-
-#pepito
-{
+#tutoClown{
+	position: absolute;
+	
+	height: 100px;
+	width: 200px;
+	
+	left: 105px;
+}
+#pepito{
 	height: 300px;
 	width: 300px;
 
@@ -214,4 +235,28 @@ body{
 	left: 0;
 	
 	border-bottom: 2px solid #000;
+}
+.tuto{
+	background-image: url(./img/fleche.png);
+	background-position: 0px -5px;
+	
+	text-align: center;
+	margin-right: -10px;
+	
+	color: red;
+}
+.tutofat{
+	background-image: url(./img/fatfleche.png);
+	background-position: 0px -5px;
+	
+	text-align: center;
+	
+	color: red;
+
+}
+.explain{
+	margin: 2px 5px 20px 20px;
+}
+.explain1{
+	margin: 5px 5px 5px 20px;
 }

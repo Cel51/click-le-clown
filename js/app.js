@@ -3,6 +3,7 @@ $(document).ready(function()
 	ele_pepito.css({"display":"none"});
 	ele_score.html(score);
 	ele_clown.css({"top":posY,"left":posX});
+	ele_info.html("<a text-align='right' onClick='tuto()'>Tutoriel</a>");
 	
 	$(popcorn.getName()).html(popcorn.getCost()+" pts");
 	$(soda.getName()).html(soda.getCost()+" pts");
@@ -26,7 +27,5 @@ $(document).ready(function()
 	});	
 	ele_vip.click(function(){
 		buy(vip);
-	});	
-	
-	interval = setInterval(timer,1000);
+	});
 });

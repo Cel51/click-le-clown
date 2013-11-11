@@ -1,4 +1,5 @@
 var ele_wrap = $("#wrapper");
+var ele_info = $(".infoGame");
 var ele_clown = $("#clown");
 var ele_pepito = $("#pepito");
 
@@ -12,6 +13,13 @@ var ele_pop = $(".popcorn");
 var ele_soda = $(".soda");
 var ele_ice = $(".icecream");
 var ele_vip = $(".vip");
+
+var tuto_clown = $("#tutoClown");
+var tuto_pepito = $("#tutoPepito");
+var tuto_popcorn = $("#tutoPopcorn");
+var tuto_soda = $("#tutoSoda");
+var tuto_ice = $("#tutoIcecream");
+var tuto_vip = $("#tutoVip");
 
 var popcorn = new Bonus('.prixp',2);
 var soda = new Bonus('.prixs',5);
@@ -30,9 +38,9 @@ var posX = (Math.random()*(x - $("#clown").width));
 
 var score = 0;
 var init_time = 60;
-var time = init_time;
 var actif = 0;
 var bestScore = 0;
+var step = 0;
 
 var interval;
 var chances = 11;
@@ -69,42 +77,45 @@ function reset(){
 }
 		
 function timer(){
-	time--;
-	ele_time.html(time);
-	
-	var chapiteau = Math.floor((Math.random()*100)+1);
-	if(chapiteau < chances){
-		ele_pepito.css({"display":"inline"});
-	}else{
-		ele_pepito.css({"display":"none"});
-	}
-	if (time==0) {
-		$("#clown").css({"display":"none"});
-		ele_pepito.css({"display":"none"});
+	if(time > 0){
+		time--;
+		ele_time.html(time);
 		
-		
-		ele_bonus.css({"bgcolor":"#ED1C24"});
-		ele_pop.css({"display":"none"});
-		ele_soda.css({"display":"none"});
-		ele_ice.css({"display":"none"});
-		ele_vip.css({"display":"none"});
-	
-		$(popcorn.getName()).css({"display":"none"});
-		$(soda.getName()).css({"display":"none"});
-		$(icecream.getName()).css({"display":"none"});
-		$(vip.getName()).css({"display":"none"});
-	
-		ele_again.css({"font-size":"30px","border":"2px solid #000"})
-		ele_again.html("<p onClick='reset();' align='center' vAlign='top'>Try Again</p>");
-		
-		if(score > bestScore){
-			bestScore = score;
+		var chapiteau = Math.floor((Math.random()*100)+1);
+		if(chapiteau < chances){
+			ele_pepito.css({"display":"inline"});
+		}else{
+			ele_pepito.css({"display":"none"});
 		}
-		ele_best.html(bestScore);
-		ele_best.css({"border-bottom":"2px solid #000","border-left":"2px solid #000"});
+	}else{
+		if (time==0) {
+			$("#clown").css({"display":"none"});
+			ele_pepito.css({"display":"none"});
+			
+			
+			ele_bonus.css({"bgcolor":"#ED1C24"});
+			ele_pop.css({"display":"none"});
+			ele_soda.css({"display":"none"});
+			ele_ice.css({"display":"none"});
+			ele_vip.css({"display":"none"});
 		
-		alert("Score: "+score);
-		clearInterval(interval);
+			$(popcorn.getName()).css({"display":"none"});
+			$(soda.getName()).css({"display":"none"});
+			$(icecream.getName()).css({"display":"none"});
+			$(vip.getName()).css({"display":"none"});
+		
+			ele_again.css({"font-size":"30px","border":"2px solid #000"})
+			ele_again.html("<p onClick='reset();' align='center' vAlign='top'>Try Again</p>");
+			
+			if(score > bestScore){
+				bestScore = score;
+			}
+			ele_best.html(bestScore);
+			ele_best.css({"border-bottom":"2px solid #000","border-left":"2px solid #000"});
+			
+			alert("Score: "+score);
+			clearInterval(interval);
+		}
 	}
 }
 function scoring(up){
@@ -225,6 +236,61 @@ function spawn(param){
 	chances = chances + 10;setTimeout(function(){
 		byDefault("vip");
 	},10000);
+}
+
+function tuto(){
+	clearInterval(interval);
+	switch(step){	
+		case 0:
+			ele_again.css({"font-size":"30px","border":"2px solid #000"});
+			ele_again.html("<p onClick='tutoInc();' align='center' vAlign='top'>Next</p>");
+			
+			ele_clown.css({"top":"0px","left":"0px"});
+			tuto_clown.addClass('tuto');
+			$(".explain").html('</br>Clickez sur le clown </br> pour gagner 1 point');
+			ele_info.hide();
+			break;
+		case 1:
+			ele_pepito.css({"display":"inline"});
+			tuto_clown.animate({"left":"+=200","top":"+=100"},"fast");
+			$(".explain").html('</br>Clickez sur le chapiteau </br> pour gagner 3 points');
+			break;
+		case 2:
+			tuto_clown.css({"left":"100px","top":"0px"});
+			ele_pepito.css({"display":"none"});
+			tuto_clown.removeClass('tuto');
+			$(".explain").html('');
+			tuto_popcorn.addClass('tutofat');
+			$(".explain1").html('</br></br></br>Prenez du Pop Corn</br>pour doubler</br>temporairement</br>la valeur des clics');
+			break;
+		case 3:
+			tuto_popcorn.animate({"top":"+=200"});
+			$(".explain1").html('</br></br></br>Buvez un soda pour</br>augmenter de 10</br>secondes la limite de </br>temps');
+			break;
+		case 4:
+			tuto_popcorn.animate({"top":"+=200"});
+			$(".explain1").html('</br></br></br>Prenez une glace</br>afin de stoper les</br>mouvements du clown');
+			break;
+		case 5:
+			tuto_popcorn.animate({"top":"+=200"});
+			$(".explain1").html('</br></br></br>Achetez le billet V.I.P</br>afin de voir le</br>chapiteau plus souvent');
+			break;
+		case 6:
+			tuto_popcorn.css({"top":"0px"});
+			$(".explain1").html('');
+			tuto_popcorn.removeClass('tutofat');
+			step = 0;
+			ele_again.css({"border":"none"});
+			ele_again.html('');
+			ele_info.show();
+			ele_info.html("<a onClick='reset()'>D&eacute;marrer le jeu</a>");
+			break;
+	}
+}
+
+function tutoInc(){
+	step = step + 1;
+	tuto();
 }
 //---------------------------------------------------------------------------
 
